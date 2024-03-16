@@ -17,7 +17,7 @@ const Form = (props) => {
       age: parseInt(age),
       city,
     };
-    console.log(formData, '------FORM DATA------')
+    // console.log(formData, '------FORM DATA------')
     dispatch(addFormData(formData));
     await CreateUser(formData);
     dispatch(setAge(''))

@@ -42,11 +42,11 @@ const DisplayInfo = () => {
     dispatch(setSelectedUpdateItemId(null));
 };
 const onClickDelete = (id) => {
-    console.log(id);
+    // console.log(id);
     dispatch(setSelectedItemId(id));
 }
 const onClickUpdate = (id) => {
-    console.log(id)
+    // console.log(id)
     dispatch(setSelectedUpdateItemId(id));
 }
   return (

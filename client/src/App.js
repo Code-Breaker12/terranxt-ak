@@ -7,7 +7,6 @@ import { ThemeProvider } from './context/themeContext';
 const App = () => {
   return (
     <ThemeProvider>
-
       <Provider store={store}>
         <div className="App">
           <ThemeToggle/>

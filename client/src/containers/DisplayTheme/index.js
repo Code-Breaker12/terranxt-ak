@@ -6,7 +6,7 @@ const DisplayTheme = () => {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <div style={{ backgroundColor: theme === 'light' ? '#fff' : '#333', color: theme === 'light' ? '#333' : '#fff', padding: '20px', borderRadius: '5px' }}>
+    <div style={{ backgroundColor: theme === 'light' ? '#fff' : '#333', color: theme === 'light' ? '#333' : 'gray', padding: '20px', borderRadius: '5px' }}>
       <DisplayInfo/>
     </div>
   );
