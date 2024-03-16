@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import counterReducer from './counterSlice';
+import userSlice from './userSlice';
+import formSlice from './formSlice';
 
 const rootReducer = combineReducers({
-  counter: counterReducer,
+  user: userSlice,
+  form: formSlice
   // Other reducers can be added here
 });
 
