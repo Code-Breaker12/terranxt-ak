@@ -1,8 +1,11 @@
-// src/features/userSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   users: [],
+  data: [],
+  isRefetch: false,
+  selectedItemId: null,
+  selectedUpdateItemId: null
 };
 
 const userSlice = createSlice({
@@ -10,7 +13,10 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUsers: (state, action) => {
-      state.users = action.payload;
+      return{
+        ...state,
+       users: action.payload 
+      }
     },
     removeUser: (state, action) => {
       state.users = state.users.filter(user => user.id !== action.payload);
@@ -20,19 +26,31 @@ const userSlice = createSlice({
       state.users = state.users.map(user => user.id === id ? { ...user, ...updatedData } : user);
     },
     setData: (state, action) => {
-      state.baseData = action.payload;
+      return{
+        ...state,
+        baseData : action.payload
+      }
     },
     setSelectedItemId: (state, action) => {
-      state.selectedItemId = action.payload;
+      return{
+        ...state,
+        selectedItemId: action.payload
+      }
     },
     setSelectedUpdateItemId: (state, action) => {
-      state.selectedUpdateItemId = action.payload;
+      return{
+        ...state,
+        selectedUpdateItemId: action.payload
+      }
     },
     setRefetch: (state, action) => {
-      state.isRefetch = action.payload;
+      return{
+        ...state,
+        isRefetch: action.payload
+      }
     },
   },
 });
 
-export const { setUsers, removeUser, updateUser } = userSlice.actions;
+export const { setUsers, removeUser, updateUser, setRefetch, setSelectedItemId, setSelectedUpdateItemId, setData } = userSlice.actions;
 export default userSlice.reducer;

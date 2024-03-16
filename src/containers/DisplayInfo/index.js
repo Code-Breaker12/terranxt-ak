@@ -5,17 +5,16 @@ import UpdateForm from '../../components/update-form';
 import ListUsers from '../../services/list-users';
 import DeleteUser from '../../services/delete-user';
 import UpdateUser from '../../services/update-user';
-import { setUsers, removeUser, updateUser } from '../../reducers/userSlice';
-import { setRefetching } from '../../reducers/formSlice';
+import { setUsers, removeUser, updateUser, setRefetch, setData, setSelectedItemId, setSelectedUpdateItemId } from '../../reducers/userSlice';
 import Form from '../Form';
 import { mapData} from '../../data/data';
+import './style.css'
 
 const DisplayInfo = () => {
   const dispatch = useDispatch();
-  const users = useSelector(state => state.user.users);
+//   const users = useSelector(state => state.user.users);
+  const {users, data, isRefetch, selectedItemId, selectedUpdateItemId } = useSelector(state=>state.user);
   const isRefetching = useSelector(state => state.form.isRefetching);
-  const [selectedItemId, setSelectedItemId] = useState(null);
-    const [selectedUpdateItemId, setSelectedUpdateItemId] = useState(null);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -30,23 +29,25 @@ const DisplayInfo = () => {
   const removeItem = async (id) => {
     await DeleteUser(id);
     dispatch(removeUser(id));
-    dispatch(setRefetching(!isRefetching));
+    dispatch(setRefetch(!isRefetching));
   };
 
   const updateItem = async (id, updatedData) => {
     await UpdateUser(id, updatedData);
     dispatch(updateUser({ id, updatedData }));
-    dispatch(setRefetching(!isRefetching));
+    dispatch(setRefetch(!isRefetching));
   };
   const closeModal = () => {
-    setSelectedItemId(null);
-    setSelectedUpdateItemId(null);
+    dispatch(setSelectedItemId(null));
+    dispatch(setSelectedUpdateItemId(null));
 };
 const onClickDelete = (id) => {
-    setSelectedItemId(id);
+    console.log(id);
+    dispatch(setSelectedItemId(id));
 }
 const onClickUpdate = (id) => {
-    setSelectedUpdateItemId(id);
+    console.log(id)
+    dispatch(setSelectedUpdateItemId(id));
 }
   return (
     <>

@@ -13,7 +13,6 @@ const Table = ({ headers, data, onDelete, onUpdate }) => {
                 </tr>
             </thead>
             <tbody>
-            {console.log(data)}
             {data ? data?.map((rowData) => (
                     <tr key={rowData?.id}>
                         <td>{rowData?.fullName}</td>

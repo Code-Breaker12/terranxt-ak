@@ -1,17 +1,20 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store/store';
-import DisplayInfo from './containers/DisplayInfo';
-// import Counter from './Counter';
-
-const App = ()=> {
+import ThemeToggle from './components/theme-toggle';
+import DisplayTheme from './containers/DisplayTheme';
+import { ThemeProvider } from './context/themeContext';
+const App = () => {
   return (
-    <Provider store={store}>
-      <div className="App">
-        <DisplayInfo/>
-        {/* <Counter /> */}
-      </div>
-    </Provider>
+    <ThemeProvider>
+
+      <Provider store={store}>
+        <div className="App">
+          <ThemeToggle/>
+          <DisplayTheme/>
+        </div>
+      </Provider>
+    </ThemeProvider>
   );
 }
 
